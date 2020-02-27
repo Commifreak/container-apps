@@ -16,7 +16,7 @@ services:
     networks:
       - guac
     volumes:
-      - ./init_db.sh:/opt/guacamole/init_db.sh
+      - guac_schema:/opt/guacamole/mysql/schema
     #command:
     #  - bash /opt/guacamole/init_db.sh
       
@@ -38,11 +38,13 @@ services:
       - 3306:3306
     volumes:
       - mysql_data:/var/lib/mysql
+      - guac_schema:/guac_schema
     networks:
       - guac
       
 volumes:
   mysql_data:
+  guac_schema:
   
 networks:
   guac:
