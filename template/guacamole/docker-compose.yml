@@ -17,8 +17,6 @@ services:
       - guac
     volumes:
       - guac_schema:/opt/guacamole/mysql/schema
-    #command:
-    #  - bash /opt/guacamole/init_db.sh
       
   guacd:
     image: guacamole/guacd:1.1.0
@@ -38,7 +36,7 @@ services:
       - 3306:3306
     volumes:
       - mysql_data:/var/lib/mysql
-      - guac_schema:/guac_schema
+      - guac_schema:/docker-entrypoint-initdb.d
     networks:
       - guac
       
