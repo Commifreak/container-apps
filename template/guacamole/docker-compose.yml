@@ -1,0 +1,45 @@
+version: '3.1'
+
+services:
+
+  guacamole:
+    image: guacamole/guacamole:1.1.0
+    restart: always
+    environment:
+      GUACD_HOSTNAME: guacd_guacd_1
+      MYSQL_HOSTNAME: mysql_db_1
+      MYSQL_DATABASE: guac
+      MYSQL_USER: root
+      MYSQL_PASSWORD: guac
+    ports:
+      - 8123:8080
+    networks:
+      - guac
+      
+  guacd:
+    image: guacamole/guacd:1.1.0
+    restart: always
+    ports:
+      - 4822:4822
+    networks:
+      - guac
+      
+  db:
+    image: mysql
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: guac
+    ports:
+      - 3306:3306
+    volumes:
+      - mysql_data:/var/lib/mysql
+    networks:
+      - guac
+      
+volumes:
+  mysql_data:
+  
+networks:
+  guac:
+    driver: bridge
