@@ -17,8 +17,8 @@ services:
       - guac
     volumes:
       - ./init_db.sh:/opt/guacamole/init_db.sh
-    command:
-      - bash /opt/guacamole/init_db.sh
+    #command:
+    #  - bash /opt/guacamole/init_db.sh
       
   guacd:
     image: guacamole/guacd:1.1.0
