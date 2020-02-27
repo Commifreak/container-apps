@@ -605,5 +605,16 @@
         "version": "1.1.1",
         "location": "https://hub.docker.com/r/arm64v8/irssi",
         "type": "docker"
+    },
+    {
+        "description": "Creates a Guacamole installation",
+        "repository": "dockerhub",
+        "arch": "amd64",
+        "icon": "https://guacamole.apache.org/images/guacamole-logo-64.png",
+        "displayName": "Guacamole",
+        "name": "guacamole",
+        "version": "1.1.0",
+        "location": "https://hub.docker.com/u/guacamole/",
+        "type": "app"
     }
 ]
